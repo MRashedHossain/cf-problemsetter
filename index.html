@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codeforces Problem Finder</title>
+    <meta name="description" content="Find unsolved Codeforces problems for group practice">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/theme.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <h1>🎯 CF Problem Finder</h1>
+                        <p>Find unsolved problems for group practice</p>
+                    </div>
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Input Section -->
+                <section class="card input-card">
+                    <h2 class="section-title">Enter Codeforces Handles</h2>
+                    <div class="input-group">
+                        <label for="handlesInput">Handles (one per line)</label>
+                        <textarea 
+                            id="handlesInput" 
+                            placeholder="tourist&#10;Benq&#10;Errichto"
+                            rows="6"
+                        ></textarea>
+                        <p class="hint">💡 Enter Codeforces handles, one per line</p>
+                    </div>
+
+                    <div class="button-row">
+                        <button id="analyzeBtn" class="btn btn-primary">
+                            <span class="btn-icon">🔍</span>
+                            <span>Find Problems</span>
+                        </button>
+                        <button id="saveGroupBtn" class="btn btn-secondary">
+                            <span class="btn-icon">💾</span>
+                            <span>Save Group</span>
+                        </button>
+                        <button id="loadGroupBtn" class="btn btn-secondary">
+                            <span class="btn-icon">📂</span>
+                            <span>Load Group</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Status Message -->
+                <div id="statusMessage" class="status-message hidden"></div>
+
+                <!-- Loading Indicator -->
+                <div id="loadingIndicator" class="loading-card hidden">
+                    <div class="spinner"></div>
+                    <p>Fetching problems... This may take a moment</p>
+                </div>
+
+                <!-- Filters Section -->
+                <section id="filtersSection" class="card filters-card hidden">
+                    <h2 class="section-title">Filters</h2>
+                    <div class="filters-grid">
+                        <div class="filter-group">
+                            <label for="minRating">Min Rating</label>
+                            <input type="number" id="minRating" value="800" step="100">
+                        </div>
+                        <div class="filter-group">
+                            <label for="maxRating">Max Rating</label>
+                            <input type="number" id="maxRating" value="3500" step="100">
+                        </div>
+                        <div class="filter-group">
+                            <label for="tagFilter">Tag Filter</label>
+                            <select id="tagFilter">
+                                <option value="">All Tags</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="searchQuery">Search</label>
+                            <input type="text" id="searchQuery" placeholder="Problem name or ID">
+                        </div>
+                    </div>
+                    <div class="filter-actions">
+                        <button id="applyFilters" class="btn btn-primary btn-sm">Apply Filters</button>
+                        <button id="resetFilters" class="btn btn-secondary btn-sm">Reset</button>
+                    </div>
+                </section>
+
+                <!-- Statistics Section -->
+                <section id="statsSection" class="card stats-card hidden">
+                    <h2 class="section-title">Statistics</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-label">Total Problems</div>
+                            <div class="stat-value" id="totalProblems">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Unique Ratings</div>
+                            <div class="stat-value" id="uniqueRatings">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Handles Analyzed</div>
+                            <div class="stat-value" id="handlesCount">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Selected</div>
+                            <div class="stat-value" id="selectedCount">0</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Results Section -->
+                <section id="resultsSection" class="results-section hidden">
+                    <div class="results-header">
+                        <h2 class="section-title">Unsolved Problems</h2>
+                        <div class="results-actions">
+                            <button id="selectAllBtn" class="btn btn-secondary btn-sm">Select All</button>
+                            <button id="exportBtn" class="btn btn-primary btn-sm">
+                                <span class="btn-icon">📥</span>
+                                <span>Export</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="problemsList" class="problems-list"></div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>Made with ❤️ for competitive programmers | Data from Codeforces API</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal Container -->
+    <div id="modalContainer"></div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

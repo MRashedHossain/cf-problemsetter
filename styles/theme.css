@@ -1,0 +1,66 @@
+/* Codeforces Rating Colors */
+.rating-badge.rating-800,
+.rating-badge.rating-900,
+.rating-badge.rating-1000,
+.rating-badge.rating-1100,
+.rating-badge.rating-1200,
+.rating-badge.rating-1300,
+.rating-badge.rating-1400,
+.rating-badge.rating-1500,
+.rating-badge.rating-1600,
+.rating-badge.rating-1700,
+.rating-badge.rating-1800,
+.rating-badge.rating-1900 {
+    background: linear-gradient(135deg, #808080 0%, #999999 100%);
+}
+
+.rating-badge.rating-2000,
+.rating-badge.rating-2100,
+.rating-badge.rating-2200,
+.rating-badge.rating-2300,
+.rating-badge.rating-2400,
+.rating-badge.rating-2500,
+.rating-badge.rating-2600,
+.rating-badge.rating-2700,
+.rating-badge.rating-2800,
+.rating-badge.rating-2900 {
+    background: linear-gradient(135deg, #77ff77 0%, #00ff00 100%);
+}
+
+.rating-badge.rating-3000,
+.rating-badge.rating-3100,
+.rating-badge.rating-3200,
+.rating-badge.rating-3300,
+.rating-badge.rating-3400,
+.rating-badge.rating-3500 {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff0000 100%);
+}
+
+/* Additional rating ranges for lower/higher */
+.rating-badge.rating-400,
+.rating-badge.rating-500,
+.rating-badge.rating-600,
+.rating-badge.rating-700 {
+    background: linear-gradient(135deg, #cccccc 0%, #a0a0a0 100%);
+}
+
+/* Special case for unrated */
+.rating-badge.rating-0,
+.rating-badge.rating-unrated {
+    background: linear-gradient(135deg, #666666 0%, #888888 100%);
+}
+
+/* Dark mode adjustments */
+body.dark-mode .rating-badge {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth transitions */
+.rating-badge {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rating-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}

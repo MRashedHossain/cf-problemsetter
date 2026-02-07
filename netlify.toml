@@ -1,0 +1,42 @@
+# Netlify configuration file
+
+[build]
+  # No build command needed - static site
+  publish = "."
+
+[[headers]]
+  # Apply these headers to all routes
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+    # Cache control
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  # Cache static assets for longer
+  for = "/styles/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Redirect rules (if needed)
+[[redirects]]
+  from = "/index.htm"
+  to = "/index.html"
+  status = 301
+
+# SPA fallback (not needed for this app, but useful to have)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
